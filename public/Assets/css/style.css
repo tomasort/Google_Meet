@@ -1,7 +1,6 @@
 /* General Styles */
 body {
 	font-family: 'Roboto', 'Lato', sans-serif;
-	padding-top: 3.5rem;
 	background-color: #f8f9fa;
 }
 
@@ -13,6 +12,14 @@ ul {
 
 .cursor-pointer {
 	cursor: pointer;
+	padding:10px;
+}
+
+.cursor-pointer:hover {
+	background-color: #e0e0e0;
+	cursor: pointer;
+	padding:10px;
+	border-radius:10px;
 }
 
 textarea:focus,
@@ -78,6 +85,7 @@ input:focus {
 	color: #01795b;
 }
 
+/* Code Input Styles */
 .code-input {
 	border: none;
 }
@@ -91,13 +99,6 @@ ul.btn-list li:not(:first-child) {
 	padding-left: 1rem;
 }
 
-/* Display Center Utility */
-.display-center {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
 /* Image Styles */
 .signin-image {
 	height: auto;
@@ -106,6 +107,7 @@ ul.btn-list li:not(:first-child) {
 	box-shadow: 1px 1px 5px grey;
 }
 
+/* Footer Styles */
 .footer {
 	background-color: #f8f9fa;
 	padding: 2rem 0;
@@ -147,52 +149,118 @@ ul.btn-list li:not(:first-child) {
 	color: #868e96;
 }
 
-
+/* Home Wrap Styles */
 .home-wrap {
-	min-height: 100vh; /* Ensure content fills viewport height */
-  }
-  
-  .g-top {
-	padding: 1rem; /* Add some padding around the top section */
-  }
-  
-  /* Video and User Box Enhancements */
-  .video-wrap {
-	justify-content: space-around; /* Distribute videos evenly */
-  }
-  
-  .userbox {
-	margin-bottom: 1rem; /* Add space between user boxes */
-	text-align: center;  
-  }
-  
-  .userbox h2 {
-	font-size: 0.9rem; /* Slightly smaller heading */
-  }
-  
-  .userbox video {
-	border-radius: 5px; /* Rounded corners for videos */
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  }
-  
-  /* Sidebar Improvements */
-  .g-top-left {
-	border-left: 1px solid #ddd; /* Add a subtle border */
+	background-color: rgb(31, 30, 30);
+	min-height: 100vh;
+}
+
+.g-top {
+	padding: 1rem;
+	height:89vh;
+	position:relative;
+	/* Add some padding around the top section */
+}
+
+/* Video and User Box Enhancements */
+.video-wrap {
+	height: 600px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+.video-wrap>* {
+	flex: 1 1 45%;
+	margin-bottom: 1rem;
+	border: 1 solid red;
+	/* Add space between videos */
+}
+
+
+
+.userbox {
+	margin-bottom: 1rem;
+	/* Add space between user boxes */
+	text-align: center;
+}
+
+.userbox h2 {
+	font-size: 0.9rem;
+	/* Slightly smaller heading */
+}
+
+.userbox video {
+	border-radius: 5px;
+	/* Rounded corners for videos */
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	/* Subtle shadow */
+}
+
+/* Sidebar Improvements */
+.g-top-left {
+	position: absolute;
+	right:0;
+	height:8vh;
+	top:0;
+	border-bottom-left-radius: 10px;
+	border-left: 1px solid #ddd;
+	/* Add a subtle border */
 	padding: 1.5rem;
-  }
-  
-  .top-left-participant-wrap,
-  .top-left-chat-wrap {
-	display: flex; /* Use flexbox for alignment */
+}
+
+.top-left-participant-wrap,
+.top-left-chat-wrap {
+	display: flex;
+	/* Use flexbox for alignment */
 	align-items: center;
-  }
-  
-  .top-left-participant-icon,
-  .top-left-chat-wrap span {
-	font-size: 1.2rem; /* Slightly larger icons */
-	margin-right: 0.5rem;
-  }
-  
-  .top-left-time-wrap {
-	font-size: 0.9rem; /* Slightly smaller time display */
-  }
+}
+
+.top-left-participant-wrap{
+	position:relative;
+}
+
+.top-left-time-wrap {
+	font-size: 0.9rem;
+	/* Slightly smaller time display */
+}
+
+/* Utility Classes */
+.display-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.hidden {
+	display: none;
+}
+
+.custom-height {
+	height: 10vh;
+}
+
+.custom-position {
+	position: relative;
+}
+
+#localVideoPlayer{
+	display:None;
+}
+
+.bottom-middle{
+	display: flex;
+}
+
+.action-icon-style{
+	height:40px;
+	width:40px;
+	border: 1px solid lightgray;
+	border-radius: 50% !important;
+}
+
+#participantCount{
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	font-size: 12px;
+}

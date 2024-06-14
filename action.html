@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="public/Assets/css/style.css">
 </head>
 
-<body>
+<body style="padding-top: 3.5rem;">
 
 	<nav class="navbar navbar-expand-md fixed-top">
 		<img src="public/Assets/images/icon.png" class="logo" alt="Logo" />
@@ -69,7 +69,9 @@
 							<input type="text" placeholder="Enter Code" class="code-input" />
 						</button>
 					</li>
-					<li class="text-dark pl-4 font-weight-bold cursor-pointer join-btn">Join</li>
+					<li class="text-dark pl-4 font-weight-bold join-btn">
+						<span class="cursor-pointer">Join</span>
+					</li>
 				</ul>
 			</div>
 			<div class="container w-50">
@@ -106,7 +108,7 @@
 			<p class="text-center">&copy; 2024 Google Meet. All rights reserved.</p>
 		</div>
 	</footer>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="public/Assets/js/jquery-3.4.1.min.js"></script>
 	<script src="public/Assets/js/bootstrap.bundle.min.js"></script>
 	<script>
 		$(function(){
@@ -116,10 +118,11 @@
 			})	
 			$(document).on("click", '.join-btn', function(){
 				var join_value = $('.code-input').val();
+				if(join_value == ''){
+					return;
+				}
 				var meetingUrl = window.location.origin + '?meetingID=' + join_value;
-				alert("going to meeting url: " + meetingUrl);
-				// TODO: redirect to meeting URL 
-				// window.location.replace(meetingUrl);
+				window.location.replace(meetingUrl);
 			})
 			// Create a random 8 digit meeting ID
 			$(document).on("click", '.new-meeting', function(){
@@ -131,9 +134,7 @@
 				*/
 				var meetingID = Math.floor(10000000 + Math.random() * 90000000);
 				var meetingUrl = window.location.origin + '?meetingID=' + meetingID;
-				alert("creating new meeting: " + meetingUrl); 
-				// TODO: redirect to meeting URL 
-				// window.location.replace(meetingUrl);
+				window.location.replace(meetingUrl);
 			})
 		})
 	</script>

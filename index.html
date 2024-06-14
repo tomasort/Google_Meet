@@ -11,43 +11,92 @@
 </head>
 
 <body>
-    <main class="container-fluid d-flex flex-column home-wrap">
-        <div class="g-top text-light">
+    <main class="d-flex flex-column home-wrap">
+        <section class="g-top text-light">
             <div class="top-remote-video-show-wrap d-flex">
-                <div class="call-wrap" style="background-color: black;">
-                    <div class="video-wrap" id="divUsers" style="display:flex; flex-wrap:wrap;"></div>
+                <div class="call-wrap">
+                    <div class="video-wrap" id="divUsers"></div>
                     <div class="userbox display-center flex-column" id="me">
-                        <h2 class="display-center" style="font-size:15px;"></h2>
+                        <h2 class="display-center"></h2>
                         <div class="display-center">
-                            <video autoplay muted id="localVideoPlayer" style="width: 100px; height: 100px;"></video>
+                            <video autoplay muted id="localVideoPlayer"></video>
                         </div>
                     </div>
-                    <div class="userbox display-center flex-column" id="otherTemplate" style="display:none;">
-                        <h2 class="display-center" style="font-size:15px;"></h2>
+                    <div class="userbox display-center flex-column hidden" id="otherTemplate">
+                        <h2 class="display-center"></h2>
                         <div class="display-center">
-                            <video autoplay id="remoteVideoPlayer" style="width: 100px; height: 100px;"></video>
-                            <audio autoplay controls muted style="display:none;" id="remoteAudioPlayer"></audio>
+                            <video autoplay id="remoteVideoPlayer"></video>
+                            <audio autoplay controls muted class="hidden" id="remoteAudioPlayer"></audio>
                         </div>
                     </div>
                 </div>
             </div>
-            <div
-                class="g-top-left bg-light text-secondary w-25 d-flex align-items-center justify-content-between pl-2 pr-2">
-                <div class="top-left-participant-wrap pt-2 cursor-pointer">
-                    <div class="top-left-participant-icon">
+            <div class="g-top-left bg-light text-secondary w-25 d-flex align-items-center justify-content-between">
+                <div class="top-left-participant-wrap">
+                    <div class="top-left-participant-icon cursor-pointer">
                         <span class="material-icons">people</span>
-                    </div>
-                    <div class="top-left-participant-count">
                         <span id="participantCount">1</span>
                     </div>
                 </div>
-                <div class="top-left-chat-wrap pt-2 cursor-pointer">
-                    <span class="material-icons">chat</span>
+                <div class="top-left-chat-wrap">
+                    <div class="top-left-chat-icon cursor-pointer">
+                        <span class="material-icons">chat</span>
+                    </div>
                 </div>
                 <div class="top-left-time-wrap"></div>
             </div>
-        </div>
+        </section>
+        <section class="g-bottom bg-light m-0 d-flex justify-content-between align-items-center">
+            <div class="bottom-left d-flex justify-content-center align-items-center ml-2">
+                <div class="display-center cursor-pointer meeting-details-button">
+                    Meeting Details<span class="material-icons">keyboard_arrow_down</span>
+                </div>
+            </div>
+            <div class="bottom-middle">
+                <!-- TODO: Add some space between the icons here in the middle and set the icons in the center of the container -->
+                <div class="mic-toggle-wrap action-icon-style display-center mr-2 cursor-pointer" id="micMuteUnmute">
+                    <span class="material-icons">mic_off</span>
+                </div>
+                <div class="end-call-wrap action-icon-style display-center mr-2 cursor-pointer">
+                    <span class="material-icons text-danger">call_end</span>
+                </div>
+                <div class="video-toggle-wrap action-icon-style display-center mr-2 cursor-pointer">
+                    <span class="material-icons">videocam_off</span>
+                </div>
+            </div>
+            <div class="bottom-right d-flex justify-content-center align-items-center mr-3 custom-height">
+                <div
+                    class="present-now-wrap d-flex justify-content-center flex-column align-items-center mr-5 cursor-pointer">
+                    <span class="material-icons">present_to_all</span>
+                    <span>Present Now</span>
+                </div>
+                <div class="option-wrap cursor-pointer display-center custom-height custom-position">
+                    <div class="option-icon">
+                        <span class="material-icons">more_vert</span>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+    <script src="public/Assets/js/jquery-3.4.1.min.js"></script>
+    <script src="public/Assets/js/app.js"></script>
+    <script>
+        $(function(){
+            // get meeting id
+            const urlParams = new URLSearchParams(window.location.search);
+            var meetingId = urlParams.get('meetingID');
+            // ask the user to sign-in with their username if they are not already signed in
+            // TODO: check if the user is already signed in
+            var user_id = window.prompt("Please enter your username");
+            // if the username is not valid or empty don't let the user access the meeting
+            if(user_id == null || user_id == "" || meetingId == null || meetingId == ""){
+                alert("Invalid username or meeting ID")
+                window.location.href = "action.html";
+            }
+            $("#meetingContainer").show();
+            myapp._init(user_id, meetingId)
+        })
+    </script>
 </body>
 
 </html>
