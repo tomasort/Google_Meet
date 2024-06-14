@@ -1,39 +1,107 @@
+/* General Styles */
 body {
-	font-family: robot, lato !important;
+	font-family: 'Roboto', 'Lato', sans-serif;
+	padding-top: 3.5rem;
+	background-color: #f8f9fa;
 }
 
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.cursor-pointer {
+	cursor: pointer;
+}
+
+textarea:focus,
+input:focus {
+	outline: none !important;
+}
+
+/* Navbar Styles */
+.navbar {
+	background-color: #ffffff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
 .logo {
 	height: 43px;
 }
 
 .navbar-brand {
-	font-size: 27px;
+	font-size: 1.5rem;
+	font-family: 'Lato', sans-serif;
 	padding-left: 10px;
-	font-family: 'Lato';
 }
 
 .nav-item a {
 	color: grey !important;
-	font-size: 16px;
+	font-size: 1rem;
 	padding: 0 10px;
+	font-weight: 600;
+}
+
+/* Jumbotron Styles */
+.jumbotron {
+	background-color: #fff;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	padding: 2rem 1rem;
+	margin: 2rem auto;
+}
+
+.jumbotron h1 {
+	font-size: 2.5rem;
+	margin-bottom: 1rem;
+}
+
+.jumbotron p {
+	font-size: 1.25rem;
+	margin-bottom: 2rem;
+}
+
+/* Button Styles */
+.btn {
 	font-weight: bold;
 }
 
+.new-meeting-btn {
+	background-color: #01795b;
+	color: #fff;
+	border: none;
+}
+
+.enter-meeting-btn {
+	background-color: #fff !important;
+	border: 2px solid #01795b;
+	color: #01795b;
+}
+
+.code-input {
+	border: none;
+}
+
+/* Join Meeting Actions Styles */
+ul li:first-child {
+	padding: 0;
+}
+
+ul li:not(:first-child) {
+	padding-left: 1rem;
+}
+
+/* Display Center Utility */
 .display-center {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-li.nav-item {
-	padding: 0 10px;
-}
-
-.signing-image {
-	height: 390px;
-	border: 25px solid white;
+/* Image Styles */
+.signin-image {
+	height: auto;
+	max-width: 100%;
 	border-radius: 5px;
 	box-shadow: 1px 1px 5px grey;
-
 }
