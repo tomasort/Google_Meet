@@ -15,6 +15,7 @@
 </head>
 
 <body>
+
 	<nav class="navbar navbar-expand-md fixed-top">
 		<img src="public/Assets/images/icon.png" class="logo" alt="Logo" />
 		<a href="#" class="navbar-brand text-dark">Google Meet</a>
@@ -39,14 +40,15 @@
 					<a href="#" class="nav-link">Sign in</a>
 				</li>
 				<li class="nav-item">
-					<button class="btn btn-outline-secondary btn-lg text-info font-weight-bold">Join Meeting</button>
+					<button class="btn btn-outline-secondary btn-lg text-info font-weight-bold join-meeting">Join Meeting</button>
 				</li>
 				<li class="nav-item">
-					<button class="btn btn-info btn-lg text-light font-weight-bold">Start a Meeting</button>
+					<button class="btn btn-info btn-lg text-light font-weight-bold new-meeting">Start a Meeting</button>
 				</li>
 			</ul>
 		</div>
 	</nav>
+
 	<main>
 		<div class="jumbotron h-100 d-flex">
 			<div class="container w-50">
@@ -55,7 +57,7 @@
 					everyone to use.</p>
 				<ul class="display-center justify-content-start btn-list">
 					<li>
-						<button class="btn btn-lg text-light font-weight-bold display-center new-meeting-btn">
+						<button class="btn btn-lg text-light font-weight-bold display-center new-meeting-btn new-meeting">
 							<span class="material-icons mr-2">video_call</span>
 							New Meeting
 						</button>
@@ -67,7 +69,7 @@
 							<input type="text" placeholder="Enter Code" class="code-input" />
 						</button>
 					</li>
-					<li class="text-dark pl-4 font-weight-bold cursor-pointer">Join</li>
+					<li class="text-dark pl-4 font-weight-bold cursor-pointer join-btn">Join</li>
 				</ul>
 			</div>
 			<div class="container w-50">
@@ -104,8 +106,37 @@
 			<p class="text-center">&copy; 2024 Google Meet. All rights reserved.</p>
 		</div>
 	</footer>
-	<script src="public/Assets/js/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="public/Assets/js/bootstrap.bundle.min.js"></script>
+	<script>
+		$(function(){
+			// focus on the input field when the button for join meeting is pressed
+			$(document).on('click', '.join-meeting', function(){
+				$('.code-input').focus();
+			})	
+			$(document).on("click", '.join-btn', function(){
+				var join_value = $('.code-input').val();
+				var meetingUrl = window.location.origin + '?meetingID=' + join_value;
+				alert("going to meeting url: " + meetingUrl);
+				// TODO: redirect to meeting URL 
+				// window.location.replace(meetingUrl);
+			})
+			// Create a random 8 digit meeting ID
+			$(document).on("click", '.new-meeting', function(){
+				/* TODO: to improve this section. We would have to:
+					* Check if the meeting ID already exists. If it does, we would have to generate a new one
+					* Store the meeting ID in a database
+					* Redirect to the meeting URL
+					* Send an email to the user with the meeting URL
+				*/
+				var meetingID = Math.floor(10000000 + Math.random() * 90000000);
+				var meetingUrl = window.location.origin + '?meetingID=' + meetingID;
+				alert("creating new meeting: " + meetingUrl); 
+				// TODO: redirect to meeting URL 
+				// window.location.replace(meetingUrl);
+			})
+		})
+	</script>
 </body>
 
 
