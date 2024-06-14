@@ -146,3 +146,53 @@ ul.btn-list li:not(:first-child) {
 	font-size: 12px;
 	color: #868e96;
 }
+
+
+.home-wrap {
+	min-height: 100vh; /* Ensure content fills viewport height */
+  }
+  
+  .g-top {
+	padding: 1rem; /* Add some padding around the top section */
+  }
+  
+  /* Video and User Box Enhancements */
+  .video-wrap {
+	justify-content: space-around; /* Distribute videos evenly */
+  }
+  
+  .userbox {
+	margin-bottom: 1rem; /* Add space between user boxes */
+	text-align: center;  
+  }
+  
+  .userbox h2 {
+	font-size: 0.9rem; /* Slightly smaller heading */
+  }
+  
+  .userbox video {
+	border-radius: 5px; /* Rounded corners for videos */
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  /* Sidebar Improvements */
+  .g-top-left {
+	border-left: 1px solid #ddd; /* Add a subtle border */
+	padding: 1.5rem;
+  }
+  
+  .top-left-participant-wrap,
+  .top-left-chat-wrap {
+	display: flex; /* Use flexbox for alignment */
+	align-items: center;
+  }
+  
+  .top-left-participant-icon,
+  .top-left-chat-wrap span {
+	font-size: 1.2rem; /* Slightly larger icons */
+	margin-right: 0.5rem;
+  }
+  
+  .top-left-time-wrap {
+	font-size: 0.9rem; /* Slightly smaller time display */
+  }
