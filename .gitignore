@@ -1,0 +1,25 @@
+# Node.js
+node_modules/
+npm-debug.log
+package-lock.json # if using npm 5+
+
+# Logs
+*.log
+
+# OS-specific files
+.DS_Store # macOS
+Thumbs.db # Windows
+
+# Editors/IDEs
+.vscode/
+.idea/
+
+# Build artifacts
+dist/
+build/
+
+# Environment variables
+.env
+
+# Local configuration
+config.js
