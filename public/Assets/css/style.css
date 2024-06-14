@@ -264,3 +264,7 @@ ul.btn-list li:not(:first-child) {
 	right: 4px;
 	font-size: 12px;
 }
+
+.material-icons {
+	user-select: none; /* Prevents user from selecting the icons */
+}
