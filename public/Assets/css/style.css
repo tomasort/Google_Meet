@@ -1,0 +1,39 @@
+body {
+	font-family: robot, lato !important;
+}
+
+
+.logo {
+	height: 43px;
+}
+
+.navbar-brand {
+	font-size: 27px;
+	padding-left: 10px;
+	font-family: 'Lato';
+}
+
+.nav-item a {
+	color: grey !important;
+	font-size: 16px;
+	padding: 0 10px;
+	font-weight: bold;
+}
+
+.display-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+li.nav-item {
+	padding: 0 10px;
+}
+
+.signing-image {
+	height: 390px;
+	border: 25px solid white;
+	border-radius: 5px;
+	box-shadow: 1px 1px 5px grey;
+
+}
