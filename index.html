@@ -25,7 +25,7 @@
                             <video autoplay muted id="localVideoPlayer"></video>
                         </div>
                     </div>
-                    <div class="userbox display-center flex-column hidden" id="otherTemplate">
+                    <div class="userbox display-center flex-column" id="otherTemplate">
                         <h2 class="display-center"></h2>
                         <div class="display-center">
                             <video autoplay id="remoteVideoPlayer"></video>
@@ -95,7 +95,7 @@
                 window.location.href = "action.html";
             }
             $("#meetingContainer").show();
-            myapp._init(user_id, meetingId)
+            rtcClient._init(user_id, meetingId)
         })
     </script>
 </body>
