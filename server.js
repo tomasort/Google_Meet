@@ -30,5 +30,13 @@ io.on("connection", (socket) => {
                 connId: socket.id
             });
         });
+        socket.emit("inform_me_about_other_users" , other_users);
+    });
+    socket.on("SDP_process", (data) => {
+        console.log("SDP Process: ", data.toConnId);
+        socket.to(data.toConnId).emit("SDP_process", {
+            message: data.message,
+            fromConnId: socket.id
+        });
     });
 });
