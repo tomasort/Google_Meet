@@ -1,13 +1,82 @@
 var peerConnectionManager = (function () {
     var serverProcess = null;
-    var peers_connection_ids = [];
     var peers_connection = [];
     var remote_vid_stream = [];
     var remote_aud_stream = [];
+    var local_div = null;
+    var audio = {
+        enabled: true
+    };
+    var video = {
+        enabled: true
+    };
+    var audioMute = true;
+    var videoOn = false;
+    var rtp_aud_senders = [];
+    var rtp_vid_senders = [];
 
     async function _init(SDP_function, mcid) {
         serverProcess = SDP_function;
         myConnId = mcid;
+        eventProcess();
+        local_div = document.getElementById("localVideoPlayer");
+    }
+
+    async function loadAudio() {
+
+    }
+    async function loadVideo() {
+
+    }
+
+    function updateMediaSenders() {
+
+    }
+    function removeMediaSenders() {
+
+    }
+
+    function eventProcess() {
+        // TODO: change the color of the icons when the user clicks on them
+        $("#micMuteUnmute").on("click", async function () {
+            if (audio){
+                await loadAudio();
+            }
+            if (!audio) {
+                alert("Audio permission denied");
+                // return;
+            }
+            if(audioMute) {
+                audio.enabled = true;
+                $("#micMuteUnmute").html("<span class=\"material-icons\">mic</span>");
+                updateMediaSenders(audio, rtp_aud_senders);
+            } else {
+                audio.enabled = false;
+                $("#micMuteUnmute").html("<span class=\"material-icons\">mic_off</span>");
+                removeMediaSenders(rtp_aud_senders);
+            }
+            audioMute = !audioMute;
+        });
+        $("#videoOnOff").on("click", async function () {
+            if (video){
+                await loadVideo();
+            }
+            if (!video) {
+                alert("Video permission denied");
+                // return;
+            }
+            if(videoOn) {
+                video.enabled = true;
+                $("#videoOnOff").html("<span class=\"material-icons\">videocam</span>");
+                updateMediaSenders(video, rtp_vid_senders);
+            } else {
+                video.enabled = false;
+                $("#videoOnOff").html("<span class=\"material-icons\">videocam_off</span>");
+                removeMediaSenders(rtp_vid_senders);
+            }
+            audioMute = !audioMute;
+            videoOn = !videoOn;
+        });
     }
 
     async function setOffer(connId) {
@@ -24,7 +93,7 @@ var peerConnectionManager = (function () {
             await peers_connection[connId].setRemoteDescription(new RTCSessionDescription(message.answer));
         } else if (message.offer){
             if (connection == null) {
-                await setConnection(connId);
+                await setNewConn(connId);
             }
             await connection.setRemoteDescription(new RTCSessionDescription(message.offer));
             var answer = await connection.createAnswer();
@@ -32,7 +101,7 @@ var peerConnectionManager = (function () {
             serverProcess(JSON.stringify({ answer: answer }), connId);
         } else if (message.icecandidate) {
             if (connection == null) {
-                await setConnection(connId);
+                await setNewConn(connId);
             }
             try {
                 await connection.addIceCandidate(message.icecandidate);
@@ -92,7 +161,6 @@ var peerConnectionManager = (function () {
                 remoteAudioPlayer.load();
             }
         };
-        peers_connection_ids[connId] = connId;
         peers_connection[connId] = connection;
 
         return connection
@@ -164,7 +232,6 @@ var rtcClient = (function () {
         });
 
         socket.on("inform_me_about_other_users", function (other_users) {
-            console.log("Inform me about other users");
             if (other_users.length > 0){
                 for (var i = 0; i < other_users.length; i++) {
                     console.log("Inform me about other users: ", other_users[i].userId);
