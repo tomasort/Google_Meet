@@ -1,4 +1,4 @@
-FROM node:12-stretch
+FROM node:latest
 USER node
 RUN mkdir /home/node/src
 WORKDIR /home/node/src 
